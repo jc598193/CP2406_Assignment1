@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -13,17 +15,20 @@ public class Main {
             int length = controller.nextInt();
             System.out.println("SpeedLimit:");
             int speedLimit = controller.nextInt();
-            System.out.println("Start location:");
-            int[] start_location = new int[10];
-            for (int j=0; j<2; j++){
-                start_location[j] = controller.nextInt();
-            }
+//            System.out.println("Start location:");
+//            int[] start_location = new int[10];
+//            for (int j=0; j<2; j++){
+//                start_location[j] = controller.nextInt();
+//            }
 
             System.out.println("Vector: ");
             String vector = controller.next();
             String id = "00"+i;
-            Road road = new Road(id, length, speedLimit, start_location, vector);
+            Road road = new Road(id, length, speedLimit, new int[]{0,0}, vector);
             roads.add(road);
+        }
+        for (int i = 1; i< roads.size(); i++){
+            roads.get(i).setStart_location(new int[]{roads.get(i - 1).getEnd_location()[0] + 1, roads.get(i - 1).getEnd_location()[1]});
         }
 
         System.out.println("Number of cars:");
