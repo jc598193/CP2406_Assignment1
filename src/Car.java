@@ -54,10 +54,36 @@ public class Car {
         return this.speed;
     }
 
-    public void drive(int time){
+    public void drive(){
 
         this.speed = this.currentRoad.getSpeedLimit();
 
+        if (this.getPosition() == this.currentRoad.getEnd_location()){
+            if (!this.currentRoad.getLightsOnRoad().isEmpty()){
+                if (this.currentRoad.getLightsOnRoad().get(0).getState().equals("red")){
+                    this.stop();
+                }else if (!this.currentRoad.getConnectedRoad().isEmpty()){
+                    this.currentRoad.getCarsOnRoad().remove(this);
+                    this.currentRoad = this.currentRoad.getConnectedRoad().get(0);
+                    this.currentRoad.getCarsOnRoad().add(this);
+                    this.position = this.currentRoad.start_location;
+                    this.speed = this.currentRoad.getSpeedLimit();
+                }else{
+                    this.stop();
+                    this.currentRoad.getCarsOnRoad().remove(this);
+                }
+            }
+        }else if (this.getPosition()[0] < this.currentRoad.getEnd_location()[0]){
+            this.position[0] = this.position[0] + this.speed;
+        }else if (this.getPosition()[1] < this.currentRoad.getEnd_location()[1]){
+            this.position[1] = this.position[1] + this.speed;
+        }else {
+            this.stop();
+        }
+    }
+
+    private void setSpeed(int speed) {
+        this.speed = speed;
     }
 
 }
