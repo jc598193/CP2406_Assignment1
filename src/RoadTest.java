@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RoadTest {
@@ -41,5 +42,11 @@ public class RoadTest {
         ArrayList<TrafficLight> lights = new ArrayList<>();
         lights.add(light);
         assertEquals(lights, road.getLightsOnRoad());
+    }
+
+    @Test
+    public void testStart_location(){
+        int[] test = {0,1};
+        assertArrayEquals(test, road.start_location);
     }
 }

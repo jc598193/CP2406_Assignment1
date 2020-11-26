@@ -82,6 +82,10 @@ public class Road {
         return this.end_location;
     }
 
+    public void setEnd_location(int[] location) {
+        this.end_location = location;
+    }
+
     public void setConnected_roads(ArrayList<Road> connected_roads) {
         this.connected_roads = connected_roads;
     }
