@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class TrafficLight {
     private String id;
     private int[] location;
@@ -48,6 +50,14 @@ public class TrafficLight {
 
     public String getId(){
         return id;
+    }
+
+    public Road getRoadIncluded() {
+        return roadIncluded;
+    }
+
+    public void printLightStatus() {
+        System.out.printf("%s is:%s on %s at position:%s%n", this.getId(), this.getState(), this.getRoadIncluded().getName(), Arrays.toString(this.getLocation()));
     }
 
 
