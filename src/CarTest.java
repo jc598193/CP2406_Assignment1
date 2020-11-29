@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CarTest {
     Road road = new Road("001",20,4,new int[]{0,1}, "horizontal");
-    Car car = new Car("001", road, road.start_location);
+    Car car = new Car("001", road);
 
 //    @Test
 //    void testIntList(){

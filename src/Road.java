@@ -74,10 +74,6 @@ public class Road {
         return vector;
     }
 
-    public void setStart_location(int[] location){
-        this.start_location = location;
-    }
-
     public  int[] getEnd_location(){
         return this.end_location;
     }

@@ -1,12 +1,12 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class TrafficLight {
     private String id;
     private int[] location;
     private static final String RED = "red";
     private static final String GREEN = "green";
-    private static final int red_time = 2;
-    private static final int green_time = 3;
+    private static final double CHANGE_GREEN = 0.5;
     private Road roadIncluded;
     private String state;
 
@@ -19,25 +19,16 @@ public class TrafficLight {
         this.roadIncluded.getLightsOnRoad().add(this);
     }
 
-    public void changState(){
-        int time = 0;
+    public void changState(int seed){
 
-        if (this.state.equals(RED)){
-            while (time < red_time){
-                time = time + 1;
-            }if( time == red_time){
-                this.state = GREEN;
-
-            }
-        }else {
-            while (time < green_time){
-                time ++;
-            }if(time == green_time){
-                this.state = RED;
-
-            }
-
+        Random random = new Random(seed);
+        double probability = random.nextDouble();
+        if (probability > CHANGE_GREEN) {
+            this.state = GREEN;
+        } else {
+            this.state = RED;
         }
+
     }
 
     public String getState(){
