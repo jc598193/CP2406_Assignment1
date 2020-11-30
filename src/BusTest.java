@@ -1,31 +1,24 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BusTest {
-    Road road = new Road("001",20,4,new int[]{0,1}, "horizontal");
-    Bus bus1 = new Bus("001", road);
-    TrafficLight light = new TrafficLight("001",road);
+class BusTest {
+    Road road = new Road("0", 1, 5, new int[]{0, 0}, "horizontal");
+    Bus bus = new Bus("0");
 
     @Test
-    void testGetId(){
-        assertEquals("bus_001", bus1.getId());
+    void getLength() {
+        assertEquals(3, bus.getLength());
     }
 
     @Test
-    void testGetLength(){
-        assertEquals(3, bus1.getLength());
+    void getId() {
+        assertEquals("bus_0", bus.getId());
     }
 
     @Test
-    void testGetSpeed(){
-        assertEquals(4, bus1.getSpeed());
-    }
-
-    @Test
-    void testGetPosition(){
-        int[] position = {0,1};
-        assertArrayEquals(position, bus1.getPosition());
+    void testInheritance() {
+        assertEquals(0, bus.getSpeed());
+        assertEquals(1, bus.getXpos());
     }
 }

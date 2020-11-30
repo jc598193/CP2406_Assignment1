@@ -5,48 +5,51 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RoadTest {
-    Road road = new Road("001",20,4,new int[]{0,1}, "horizontal");
-    Car car1 = new Car("001", road);
-    TrafficLight light = new TrafficLight("001",road);
+class RoadTest {
+    Road road = new Road("0", 1, 5, new int[]{0, 0}, "horizontal");
 
     @Test
-    public void testGetName(){
-        assertEquals("road_001", road.getName());
+    void getId() {
+        assertEquals("road_0", road.getId());
     }
 
     @Test
-    public void testGetLength(){
-        assertEquals(20, road.getLength());
+    void getSpeedLimit() {
+        assertEquals(1, road.getSpeedLimit());
     }
 
     @Test
-    public void testGetSpeed(){
-        assertEquals(4, road.getSpeedLimit());
+    void getLength() {
+        assertEquals(5, road.getLength());
     }
 
     @Test
-    public void testGetVector(){
-        assertEquals("horizontal", road.getVector());
+    void getStartLocation() {
+        int[] expected = {0, 0};
+        assertArrayEquals(expected, road.getStartLocation());
     }
 
     @Test
-    public void testCars(){
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        assertEquals(cars, road.getCarsOnRoad());
+    void getEndLocation() {
+        int[] expected = {5, 0};
+        assertArrayEquals(expected, road.getEndLocation());
     }
 
     @Test
-    public void testLights(){
-        ArrayList<TrafficLight> lights = new ArrayList<>();
-        lights.add(light);
-        assertEquals(lights, road.getLightsOnRoad());
+    void getCars() {
+        ArrayList<Car> expected = new ArrayList<>();
+        assertEquals(expected, road.getCarsOnRoad());
     }
 
     @Test
-    public void testStart_location(){
-        int[] test = {0,1};
-        assertArrayEquals(test, road.start_location);
+    void getLights() {
+        ArrayList<TrafficLight> expected = new ArrayList<>();
+        assertEquals(expected, road.getLightsOnRoad());
+    }
+
+    @Test
+    void getConnectedRoads() {
+        ArrayList<Road> expected = new ArrayList<>();
+        assertEquals(expected, road.getConnectedRoads());
     }
 }
