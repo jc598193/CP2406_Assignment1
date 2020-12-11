@@ -25,12 +25,6 @@ public class Road {
         }
     }
 
-//    public void createCars(int carSpawns) {
-//        for (int i = 0; i < carSpawns; i++)
-//            carsOnRoad.add(new Car(Integer.toString(i), this));
-//    }
-
-
     public String getId() {
         return id;
     }
@@ -64,7 +58,7 @@ public class Road {
         if (this.vector.equals("horizontal")){
             this.endLocation = new int[]{this.length + this.startLocation[0], this.startLocation[1]}; //only works for horizontal roads;
         }else if(this.vector.equals("vertical")) {
-            this.endLocation = new int[]{this.startLocation[0], this.length + this.startLocation[1]}; //only works for horizontal roads;
+            this.endLocation = new int[]{this.startLocation[0], this.length + this.startLocation[1]}; //only works for vertical roads;
 
         }    }
 
@@ -112,6 +106,9 @@ public class Road {
         this.connectedRoads = connectedRoads;
     }
 
+    public void setVector(String vector){
+        this.vector = vector;
+    }
     public String getVector() {
         return vector;
     }

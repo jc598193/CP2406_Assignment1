@@ -23,18 +23,22 @@ public class Main {
 
         //Create objects:
         System.out.println("Object Creation:\n---------------------");
+
+        // input information
         System.out.println("Number of Roads: ");
         int roadSpawns = simController.nextInt();
         System.out.println("Number of Cars: ");
         int car_spawns = simController.nextInt();
         System.out.println("Number of Lights: ");
         int lightSpawns = simController.nextInt();
+        // check if lights is more than roads
         if (lightSpawns > roadSpawns){
             System.out.println("Lights can not more than roads.");
             System.out.println("Number of Lights: ");
             lightSpawns = simController.nextInt();
         }
         System.out.println("Roads:");
+        // create roads with information.
         ArrayList<Road> all_roads = new ArrayList<>();
         for (int i = 0; i < roadSpawns; i++) {
             System.out.println("Please input parameters for road_" + i + "...");
@@ -44,15 +48,15 @@ public class Main {
             int speedLimitInput = simController.nextInt();
             System.out.println("Vector: ");
             String vector = simController.next();
-//            int ask_for_speed = 1; // force speed limit to be 1 for prototype.
             all_roads.add(new Road(Integer.toString(i), speedLimitInput, lengthInput, new int[]{0, 0}, vector));
         }
+        // output roads information
         System.out.println("\nRoads;");
         for (Road road : all_roads
         ) {
             road.printRoadInfo();
         }
-
+        // create car
         System.out.println("\nCars;");
         ArrayList<Car> cars = new ArrayList<>();
         for (int i = 0; i < car_spawns; i++) {
@@ -69,11 +73,9 @@ public class Main {
             all_roads.get(i).printRoadInfo();
             all_roads.get(i-1).getConnectedRoads().add(all_roads.get(i)); // connect road_0 to road_1
         }
-//        all_roads.get(1).setStartLocation(new int[]{all_roads.get(0).getLength() + 1, 0}); // place road_1 to a position at the end of road_0.
-//        all_roads.get(1).printRoadInfo();
-//        all_roads.get(0).getConnectedRoads().add(all_roads.get(1)); // connect road_0 to road_1
-        System.out.println();
 
+        System.out.println();
+        // create lights
         System.out.println("\nTraffic Lights;");
         ArrayList<TrafficLight> all_lights = new ArrayList<>();
         for (int i = 0; i < lightSpawns; i++) {
@@ -81,6 +83,7 @@ public class Main {
             all_lights.get(i).printLightStatus();
         }
         System.out.println();
+
         //Simulation loop:
         System.out.println("Simulation:");
         Random random = new Random();

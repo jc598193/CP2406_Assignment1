@@ -31,8 +31,6 @@ public class Car {
         ypos = 0;
     }
     public void drive(){
-
-
         // horizontal road
         if (this.currentRoad.getVector().equals("horizontal")) {
             this.speed = this.currentRoad.getSpeedLimit();
@@ -155,24 +153,6 @@ public class Car {
 
         }
     }
-//    public void move() {
-//        this.speed = this.currentRoad.getSpeedLimit(); //set speed limit to that of currentRoad
-//        if (!this.currentRoad.getLightsOnRoad().isEmpty() && this.position == this.currentRoad.getEndLocation()[0] && this.currentRoad.getLightsOnRoad().get(0).getState().equals("red")) {
-//            this.speed = STOPPED;
-//        } else {
-//            this.speed = this.currentRoad.getSpeedLimit();
-//            if (this.currentRoad.getEndLocation()[0] == this.getPosition() && !this.currentRoad.getConnectedRoads().isEmpty()) {
-//                this.currentRoad.getCarsOnRoad().remove(this);
-//                this.currentRoad = this.currentRoad.getConnectedRoads().get(NEXT_ROAD_INDEX);
-//                this.currentRoad.getCarsOnRoad().add(this);
-//                this.position = this.currentRoad.getStartLocation()[0];
-//            } else if (this.currentRoad.getEndLocation()[0] > this.getPosition()) {
-//                this.position = (this.position + this.speed);
-//            } else {
-//                this.speed = STOPPED;
-//            }
-//        }
-//    }
 
     public void printCarStatus() {
         System.out.printf("%s going:%dm/s on %s at position: [%s,%s]%n", this.getId(), this.getSpeed(), this.getCurrentRoad().
